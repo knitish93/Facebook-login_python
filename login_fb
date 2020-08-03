@@ -1,0 +1,31 @@
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from time import sleep
+
+email_id = input('Please enter your email address:')
+pwd = input('Please enter your email Password:')
+
+driver = webdriver.Chrome(ChromeDriverManager().install())
+driver.get('https://www.facebook.com/')
+sleep(1)
+
+username = driver.find_element_by_id('email')
+username.send_keys(email_id)
+sleep(1)
+
+password = driver.find_element_by_id('pass')
+password.send_keys(pwd)
+print ("Login Credentials are entered correctly")
+
+submit = driver.find_element_by_id('loginbutton')
+submit.click()
+
+print ("You are successfully login to your account")
+'''
+    After login to the facebook. It loads the dashboard of the fb account. After entering any key to, user will be quit
+    the application.
+    '''
+
+input('Press anything to quit')
+driver.quit()
+print("Hello World")
